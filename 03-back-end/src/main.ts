@@ -1,8 +1,7 @@
 import * as express from "express";
 import * as cors from "cors";
 import Config from "./config/dev";
-import SubjectService from './components/subject/service';
-import SubjectController from "./components/subject/controller";
+import SubjectRouter from './components/subject/router';
 
 const application: express.Application = express();
 
@@ -20,11 +19,7 @@ application.use(
     })
 );
 
-const subjectService: SubjectService = new SubjectService();
-const subjectController: SubjectController = new SubjectController(subjectService);
-
-application.get("/subject", subjectController.getAll.bind(subjectController));
-application.get("/subject/:id", subjectController.getById.bind(subjectController));
+SubjectRouter.setupRoutes(application);
 
 application.use((req, res) => {
     res.sendStatus(404);
