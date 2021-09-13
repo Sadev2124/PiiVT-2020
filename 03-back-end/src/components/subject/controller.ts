@@ -1,6 +1,7 @@
 import {Request, Response, NextFunction } from 'express';
 import SubjectModel from './model';
 import SubjectService from './service';
+import IErrorResponse from '../../common/IErrorResponse.interface';
 
 class SubjectController {
     private subjectService: SubjectService;
@@ -25,14 +26,19 @@ class SubjectController {
             return;
         }
 
-        const subject: SubjectModel|null = await this.subjectService.getById(subjectId);
+        const data: SubjectModel|null|IErrorResponse = await this.subjectService.getById(subjectId);
 
-        if (subject === null) {
+        if (data === null) {
             res.sendStatus(404);
             return;
         }
 
-        res.send(subject);
+        if (data instanceof SubjectModel) {
+            res.send(data);
+            return;
+        }
+
+        res.status(500).send(data);
     }
 }
 

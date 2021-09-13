@@ -1,6 +1,6 @@
 import SubjectModel from "./model";
 import * as mysql2 from 'mysql2/promise';
-import { isArrayBufferView } from "util/types";
+import IErrorResponse from '../../common/IErrorResponse.interface';
 
 class SubjectService{
     private db: mysql2.Connection;
@@ -18,34 +18,59 @@ class SubjectService{
         return item;
     }
 
-    public async getAll(): Promise<SubjectModel[]> {
-        const lista: SubjectModel[] = [];
+    public async getAll(): Promise<SubjectModel[]|IErrorResponse> {
+        return new Promise<SubjectModel[]|IErrorResponse>(async (resolve) => {
 
-        const sql: string = "SELECT * FROM subject;";
-        const [ rows, columns ] = await this.db.execute(sql);
+            const sql: string = "SELECT * FROM subject;";
+            this.db.execute(sql)
+                .then(async result => {
+                    const rows = result[0];
+                    const lista: SubjectModel[] = [];
 
-        if (Array.isArray(rows)) {
-            for (const row of rows) {
-                lista.push(await this.adaptModel(row));
-            }
-        }
-
-        return lista;
+                    if (Array.isArray(rows)) {
+                        for (const row of rows) {
+                            lista.push(await this.adaptModel(row))
+                        }
+                    }
+        
+                    resolve(lista);
+                })
+                .catch(error => {
+                    resolve({
+                        errorCode: error?.errno,
+                        errorMessage: error?.sqlMessage
+                    });
+                });
+        });
     }
 
-    public async getById(subjectId: number): Promise<SubjectModel|null> {
-        const sql: string = "SELECT * FROM subject WHERE subject_id = ?;";
-        const [ rows, columns ] = await this.db.execute(sql, [subjectId]);
-
-        if (!Array.isArray(rows)) {
-            return null;
-        }
-
-        if (rows.length === 0) {
-            return null;
-        }
-
-        return await this.adaptModel(rows[0]);
+    public async getById(subjectId: number): Promise<SubjectModel|null|IErrorResponse> {
+        return new Promise<SubjectModel|null|IErrorResponse>(async resolve => {
+            const sql: string = "SELECT * FROM subject WHERE subject_id = ?;";
+            this.db.execute(sql, [subjectId])
+                .then(async result => {
+                    const [ rows, columns ] = result;
+                    if (!Array.isArray(rows)) {
+                        resolve (null);
+                        return;
+                    }
+        
+                    if (rows.length === 0) {
+                        resolve (null);
+                        return;
+                    }
+        
+                    resolve(await this.adaptModel(
+                        rows[0]
+                    ));
+                })
+                .catch(error => {
+                    resolve({
+                        errorCode: error?.errno,
+                        errorMessage: error?.sqlMessage
+                    });
+                });
+        });
     }
 }
 
