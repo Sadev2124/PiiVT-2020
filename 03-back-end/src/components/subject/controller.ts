@@ -3,6 +3,7 @@ import SubjectModel from './model';
 import SubjectService from './service';
 import IErrorResponse from '../../common/IErrorResponse.interface';
 import { IAddSubject, IAddSubjectValidator } from './dto/AddSubject';
+import { IEditSubject, IEditSubjectValidator } from './dto/EditSubject';
 
 class SubjectController {
     private subjectService: SubjectService;
@@ -51,6 +52,33 @@ class SubjectController {
         }
 
         const result = await this.subjectService.add(data as IAddSubject);
+
+        res.send(result);
+    }
+
+    async edit(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+
+        const subjectId: number = +id;
+
+        if (subjectId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        const data = req.body;
+
+        if (!IEditSubjectValidator(data)) {
+            res.status(400).send(IEditSubjectValidator.errors);
+            return;
+        }
+
+        const result = await this.subjectService.edit(subjectId, data as IEditSubject);
+
+        if (result === null) {
+            res.sendStatus(404);
+            return;
+        }
 
         res.send(result);
     }

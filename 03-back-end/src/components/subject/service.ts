@@ -4,6 +4,7 @@ import IErrorResponse from '../../common/IErrorResponse.interface';
 import { IAddSubject } from "./dto/AddSubject";
 import { Resolver } from "dns";
 import BaseService from "../../services/BaseService";
+import { IEditSubject } from "./dto/EditSubject";
 
 class SubjectService extends BaseService<SubjectModel>{
 
@@ -26,7 +27,7 @@ class SubjectService extends BaseService<SubjectModel>{
 
     public async add(data: IAddSubject): Promise<SubjectModel|IErrorResponse> {
         return new Promise<SubjectModel|null|IErrorResponse>(async resolve => {
-            const sql = "INSERT subject SET name = ?;";
+            const sql = `INSERT subject SET name = ?;`;
 
             this.db.execute(sql, [data.name])
                 .then(async result =>{
@@ -42,6 +43,33 @@ class SubjectService extends BaseService<SubjectModel>{
                         errorMessage: error?.sqlMessage
                     })
                 })
+        });
+    }
+
+    public async edit(subjectId: number, data: IEditSubject): Promise<SubjectModel|null|IErrorResponse> {
+        const result = await this.getById(subjectId);
+
+        if (result === null) {
+            return null;
+        }
+
+        if (!(result instanceof SubjectModel)) {
+            return result;
+        }
+
+        return new Promise<SubjectModel|IErrorResponse>(async resolve => {
+            const sql = `UPDATE subject SET name = ? WHERE subject_id = ?;`;
+
+            this.db.execute(sql, [data.name, subjectId])
+                .then(async result => {
+                    resolve(await this.getById(subjectId));
+                })
+                .catch(error => {
+                    resolve({
+                        errorCode: error?.errno,
+                        errorMessage: error?.sqlMessage
+                    });
+                });
         });
     }
 }
