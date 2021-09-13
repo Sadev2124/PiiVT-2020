@@ -5,7 +5,7 @@ export default interface IConfig {
             path: string,
             route: string,
             cacheControl: boolean,
-            dotfiles: string,
+            dotfiles: "deny" | "allow",
             etag: boolean,
             index: boolean,
             maxAge: number,

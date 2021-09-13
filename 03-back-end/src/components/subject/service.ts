@@ -1,10 +1,10 @@
 import SubjectModel from "./model";
 import * as mysql2 from 'mysql2/promise';
 import IErrorResponse from '../../common/IErrorResponse.interface';
-import { IAddSubject } from "./dto/AddSubject";
+import { IAddSubject } from "./dto/IAddSubject";
 import { Resolver } from "dns";
-import BaseService from "../../services/BaseService";
-import { IEditSubject } from "./dto/EditSubject";
+import BaseService from "../../common/BaseService";
+import { IEditSubject } from "./dto/IEditSubject";
 import IModelAdapterOptions from '../../common/IModelAdapterOptions.interface';
 
 class SubjectModelAdapterOptions implements IModelAdapterOptions{}

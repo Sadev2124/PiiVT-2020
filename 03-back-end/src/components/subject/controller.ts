@@ -2,18 +2,13 @@ import {Request, Response, NextFunction } from 'express';
 import SubjectModel from './model';
 import SubjectService from './service';
 import IErrorResponse from '../../common/IErrorResponse.interface';
-import { IAddSubject, IAddSubjectValidator } from './dto/AddSubject';
-import { IEditSubject, IEditSubjectValidator } from './dto/EditSubject';
+import { IAddSubject, IAddSubjectValidator } from './dto/IAddSubject';
+import { IEditSubject, IEditSubjectValidator } from './dto/IEditSubject';
+import BaseController from '../../common/BaseController';
 
-class SubjectController {
-    private subjectService: SubjectService;
-
-    constructor(subjectService: SubjectService) {
-        this.subjectService = subjectService;
-    }
-
+class SubjectController extends BaseController{
     async getAll(req: Request, res: Response, next: NextFunction) {
-        const subjects = await this.subjectService.getAll();
+        const subjects = await this.services.subjectService.getAll();
 
         res.send(subjects);
     }
@@ -28,7 +23,7 @@ class SubjectController {
             return;
         }
 
-        const data: SubjectModel|null|IErrorResponse = await this.subjectService.getById(subjectId);
+        const data: SubjectModel|null|IErrorResponse = await this.services.subjectService.getById(subjectId);
 
         if (data === null) {
             res.sendStatus(404);
@@ -51,7 +46,7 @@ class SubjectController {
             return;
         }
 
-        const result = await this.subjectService.add(data as IAddSubject);
+        const result = await this.services.subjectService.add(data as IAddSubject);
 
         res.send(result);
     }
@@ -73,7 +68,7 @@ class SubjectController {
             return;
         }
 
-        const result = await this.subjectService.edit(subjectId, data as IEditSubject);
+        const result = await this.services.subjectService.edit(subjectId, data as IEditSubject);
 
         if (result === null) {
             res.sendStatus(404);
@@ -94,7 +89,7 @@ class SubjectController {
             return;
         }
 
-        res.send(await this.subjectService.delete(subjectId));
+        res.send(await this.services.subjectService.delete(subjectId));
     }
 }
 
