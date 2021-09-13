@@ -2,9 +2,10 @@ import * as express from "express";
 import SubjectService from './service';
 import SubjectController from "./controller";
 import IApplicationResources from '../../common/IApplicationResources.interface';
+import IRouter from "../../common/IRouter.interface";
 
-export default class SubjectRouter {
-    public static  setupRoutes(application: express.Application, resources: IApplicationResources) {
+export default class SubjectRouter implements IRouter {
+    public setupRoutes(application: express.Application, resources: IApplicationResources) {
         const subjectService: SubjectService = new SubjectService(resources.databaseConnection);
         const subjectController: SubjectController = new SubjectController(subjectService);
 
