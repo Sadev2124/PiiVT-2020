@@ -3,13 +3,9 @@ import * as mysql2 from 'mysql2/promise';
 import IErrorResponse from '../../common/IErrorResponse.interface';
 import { IAddSubject } from "./dto/AddSubject";
 import { Resolver } from "dns";
+import BaseService from "../../services/BaseService";
 
-class SubjectService{
-    private db: mysql2.Connection;
-
-    constructor(db: mysql2.Connection) {
-        this.db = db;
-    }
+class SubjectService extends BaseService<SubjectModel>{
 
     protected async adaptModel(row: any): Promise<SubjectModel>{
         const item: SubjectModel = new SubjectModel();
@@ -21,58 +17,11 @@ class SubjectService{
     }
 
     public async getAll(): Promise<SubjectModel[]|IErrorResponse> {
-        return new Promise<SubjectModel[]|IErrorResponse>(async (resolve) => {
-
-            const sql: string = "SELECT * FROM subject;";
-            this.db.execute(sql)
-                .then(async result => {
-                    const rows = result[0];
-                    const lista: SubjectModel[] = [];
-
-                    if (Array.isArray(rows)) {
-                        for (const row of rows) {
-                            lista.push(await this.adaptModel(row))
-                        }
-                    }
-        
-                    resolve(lista);
-                })
-                .catch(error => {
-                    resolve({
-                        errorCode: error?.errno,
-                        errorMessage: error?.sqlMessage
-                    });
-                });
-        });
+        return await this.getAllFromTable("subject");
     }
 
     public async getById(subjectId: number): Promise<SubjectModel|null|IErrorResponse> {
-        return new Promise<SubjectModel|null|IErrorResponse>(async resolve => {
-            const sql: string = "SELECT * FROM subject WHERE subject_id = ?;";
-            this.db.execute(sql, [subjectId])
-                .then(async result => {
-                    const [ rows, columns ] = result;
-                    if (!Array.isArray(rows)) {
-                        resolve (null);
-                        return;
-                    }
-        
-                    if (rows.length === 0) {
-                        resolve (null);
-                        return;
-                    }
-        
-                    resolve(await this.adaptModel(
-                        rows[0]
-                    ));
-                })
-                .catch(error => {
-                    resolve({
-                        errorCode: error?.errno,
-                        errorMessage: error?.sqlMessage
-                    });
-                });
-        });
+        return await this.getByIdFromTable("subject", subjectId);
     }
 
     public async add(data: IAddSubject): Promise<SubjectModel|IErrorResponse> {
