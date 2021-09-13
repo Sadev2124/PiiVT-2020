@@ -24,6 +24,7 @@ const subjectService: SubjectService = new SubjectService();
 const subjectController: SubjectController = new SubjectController(subjectService);
 
 application.get("/subject", subjectController.getAll.bind(subjectController));
+application.get("/subject/:id", subjectController.getById.bind(subjectController));
 
 application.use((req, res) => {
     res.sendStatus(404);

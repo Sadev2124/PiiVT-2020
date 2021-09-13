@@ -14,6 +14,26 @@ class SubjectController {
 
         res.send(subjects);
     }
+
+    async getById(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+
+        const subjectId: number = +id;
+
+        if (subjectId <= 0) {
+            res.sendStatus(400);
+            return;
+        }
+
+        const subject: SubjectModel|null = await this.subjectService.getById(subjectId);
+
+        if (subject === null) {
+            res.sendStatus(404);
+            return;
+        }
+
+        res.send(subject);
+    }
 }
 
 export default SubjectController;
