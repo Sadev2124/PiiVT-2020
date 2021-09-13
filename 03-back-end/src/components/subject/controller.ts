@@ -2,6 +2,7 @@ import {Request, Response, NextFunction } from 'express';
 import SubjectModel from './model';
 import SubjectService from './service';
 import IErrorResponse from '../../common/IErrorResponse.interface';
+import { IAddSubject, IAddSubjectValidator } from './dto/AddSubject';
 
 class SubjectController {
     private subjectService: SubjectService;
@@ -39,6 +40,19 @@ class SubjectController {
         }
 
         res.status(500).send(data);
+    }
+
+    async add(req: Request, res: Response, next: NextFunction) {
+        const data = req.body;
+
+        if (!IAddSubjectValidator(data)) {
+            res.status(400).send(IAddSubjectValidator.errors);
+            return;
+        }
+
+        const result = await this.subjectService.add(data as IAddSubject);
+
+        res.send(result);
     }
 }
 

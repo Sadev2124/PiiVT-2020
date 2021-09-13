@@ -1,6 +1,8 @@
 import SubjectModel from "./model";
 import * as mysql2 from 'mysql2/promise';
 import IErrorResponse from '../../common/IErrorResponse.interface';
+import { IAddSubject } from "./dto/AddSubject";
+import { Resolver } from "dns";
 
 class SubjectService{
     private db: mysql2.Connection;
@@ -70,6 +72,27 @@ class SubjectService{
                         errorMessage: error?.sqlMessage
                     });
                 });
+        });
+    }
+
+    public async add(data: IAddSubject): Promise<SubjectModel|IErrorResponse> {
+        return new Promise<SubjectModel|null|IErrorResponse>(async resolve => {
+            const sql = "INSERT subject SET name = ?;";
+
+            this.db.execute(sql, [data.name])
+                .then(async result =>{
+                    //const [ insertInfo ] = result;
+                    const insertInfo: any = result[0];
+
+                    const newSubjectId: number = +(insertInfo?.insertId);
+                    resolve(await this.getById(newSubjectId));
+                })
+                .catch(error => {
+                    resolve({
+                        errorCode: error?.errno,
+                        errorMessage: error?.sqlMessage
+                    })
+                })
         });
     }
 }
