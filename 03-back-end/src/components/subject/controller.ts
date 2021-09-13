@@ -82,6 +82,20 @@ class SubjectController {
 
         res.send(result);
     }
+
+
+    async deleteById(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+
+        const subjectId: number = +id;
+
+        if (subjectId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        res.send(await this.subjectService.delete(subjectId));
+    }
 }
 
 export default SubjectController;
