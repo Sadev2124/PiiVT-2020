@@ -12,6 +12,8 @@ import ProfessorService from './components/professor/service';
 import ProfessorRouter from "./components/professor/router";
 import StudentService from './components/student/service';
 import StudentRouter from './components/student/router';
+import MarkService from './components/mark/service';
+import MarkRouter from './components/mark/router';
 
 async function main() {
     const application: express.Application = express();
@@ -39,6 +41,7 @@ async function main() {
         userService: new UserService(resources),
         professorService: new ProfessorService(resources),
         studentService: new StudentService(resources),
+        markService: new MarkService(resources),
     };
 
     application.use(
@@ -57,6 +60,7 @@ async function main() {
         new UserRouter(),
         new ProfessorRouter(),
         new StudentRouter(),
+        new MarkRouter(),
     ]);
 
     application.use((req, res) => {
