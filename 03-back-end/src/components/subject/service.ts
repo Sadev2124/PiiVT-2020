@@ -114,6 +114,58 @@ class SubjectService extends BaseService<SubjectModel>{
                 })
         });
     }
+
+    public async getSubjectsByProfessorId(professorId: number): Promise<SubjectModel[]|IErrorResponse> {
+        const sql = `
+            SELECT
+                subject_id
+            FROM
+                professor_subject
+            WHERE
+                professor_id = ?;`;
+
+        const [ rows ] = await this.db.execute(sql, [ professorId ]);
+
+        if (!Array.isArray(rows) || rows.length === 0) {
+            return null;
+        }
+
+        const items: SubjectModel[] = [];
+
+        for (const row of rows as any) {
+            const value: any = row;
+            const item: any = await this.getByIdFromTable("subject", value.subject_id) as SubjectModel;
+            items.push(item);
+        }
+
+        return items;
+    }
+
+    public async getSubjectsByStudentId(studentId: number): Promise<SubjectModel[]|IErrorResponse> {
+        const sql = `
+            SELECT
+                subject_id
+            FROM
+                student_subject
+            WHERE
+                student_id = ?;`;
+
+        const [ rows ] = await this.db.execute(sql, [ studentId ]);
+
+        if (!Array.isArray(rows) || rows.length === 0) {
+            return null;
+        }
+
+        const items: SubjectModel[] = [];
+
+        for (const row of rows as any) {
+            const value: any = row;
+            const item: any = await this.getByIdFromTable("subject", value.subject_id) as SubjectModel;
+            items.push(item);
+        }
+
+        return items;
+    }
 }
 
 export default SubjectService;

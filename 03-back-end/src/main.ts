@@ -8,6 +8,8 @@ import Router from "./router";
 import SubjectService from './components/subject/service';
 import UserService from './components/user/service';
 import UserRouter from "./components/user/router";
+import ProfessorService from './components/professor/service';
+import ProfessorRouter from "./components/professor/router";
 
 async function main() {
     const application: express.Application = express();
@@ -33,6 +35,7 @@ async function main() {
     resources.services = {
         subjectService: new SubjectService(resources),
         userService: new UserService(resources),
+        professorService: new ProfessorService(resources),
     };
 
     application.use(
@@ -49,6 +52,7 @@ async function main() {
     Router.setupRoutes(application, resources, [
         new SubjectRouter(),
         new UserRouter(),
+        new ProfessorRouter(),
     ]);
 
     application.use((req, res) => {

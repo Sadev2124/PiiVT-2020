@@ -12,7 +12,7 @@ const IAddUserValidator = ajv.compile({
     properties: {
         username: {
             type: "string",
-            minLength: 2,
+            minLength: 6,
             maxLength: 64,
         },
         password: {

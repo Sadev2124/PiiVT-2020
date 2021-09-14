@@ -91,6 +91,46 @@ class SubjectController extends BaseController{
 
         res.send(await this.services.subjectService.delete(subjectId));
     }
-}
+
+    async getSubjectsByProfessorId(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.professorId;
+
+        const professorId: number = +id;
+
+        if (professorId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        const result = await this.services.subjectService.getSubjectsByProfessorId(professorId);
+
+        if (result == null) {
+            res.sendStatus(404);
+            return;
+        }
+
+        res.send(result);
+    }
+
+    async getSubjectsByStudentId(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.studentId;
+
+        const studentId: number = +id;
+
+        if (studentId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        const result = await this.services.subjectService.getSubjectsByProfessorId(studentId);
+
+        if (result == null) {
+            res.sendStatus(404);
+            return;
+        }
+
+        res.send(result);
+    }
+ }
 
 export default SubjectController;

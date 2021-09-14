@@ -6,7 +6,7 @@ import { IEditUser } from "./dto/IEditUser";
 import UserModel from "./model";
 import * as bcrypt from "bcrypt";
 
-class AdministratorModelAdapterOptions implements IModelAdapterOptions { }
+class UserModelAdapterOptions implements IModelAdapterOptions { }
 
 class UserService extends BaseService<UserModel> {
     protected async adaptModel(

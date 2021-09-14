@@ -10,6 +10,8 @@ export default class SubjectRouter implements IRouter {
 
         application.get("/subject", subjectController.getAll.bind(subjectController));
         application.get("/subject/:id", subjectController.getById.bind(subjectController));
+        application.get("/subject/getSubjectsByProfessorId/:professorId", subjectController.getSubjectsByProfessorId.bind(subjectController));
+        application.get("/subject/getSubjectsByStudentId/:studentId", subjectController.getSubjectsByStudentId.bind(subjectController));
         application.post("/subject", subjectController.add.bind(subjectController));
         application.put("/subject/:id", subjectController.edit.bind(subjectController));
         application.delete("/subject/:id", subjectController.deleteById.bind(subjectController));
