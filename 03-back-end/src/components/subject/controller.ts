@@ -122,7 +122,7 @@ class SubjectController extends BaseController{
             return;
         }
 
-        const result = await this.services.subjectService.getSubjectsByProfessorId(studentId);
+        const result = await this.services.subjectService.getSubjectsByStudentId(studentId);
 
         if (result == null) {
             res.sendStatus(404);

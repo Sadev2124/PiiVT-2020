@@ -127,7 +127,7 @@ class ProfessorService extends BaseService<ProfessorModel> {
         return await this.getByIdFromTable("professor", professorId) as ProfessorModel|null;
     }
     
-    public async getProfessorsBySubjectName(subjectName: string): Promise<ProfessorModel|null> {
+    public async getProfessorsBySubjectName(subjectName: string): Promise<ProfessorModel[]|null> {
         const sql = `
             SELECT
                 professor_id
@@ -142,11 +142,15 @@ class ProfessorService extends BaseService<ProfessorModel> {
             return null;
         }
 
-        const data: any = rows[0];
-
-        const professorId = +(data?.professor_id);
-
-        return await this.getByIdFromTable("professor", professorId) as ProfessorModel|null;
+        const items: ProfessorModel[] = [];
+        
+        for (const row of rows as any) {
+            const value: any = row;
+            const item: any = await this.getByIdFromTable("professor", value.professor_id) as ProfessorModel;
+            items.push(item);
+        }
+        
+        return items;
     }
 }
 

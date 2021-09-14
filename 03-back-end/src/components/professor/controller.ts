@@ -143,7 +143,7 @@ class ProfessorController extends BaseController{
     async getProfessorsBySubjectName(req: Request, res: Response, next: NextFunction) {
         const name: string = req.params.subjectName;
 
-        const data: ProfessorModel|null|IErrorResponse = await this.services.professorService.getProfessorsBySubjectName(name);
+        const data: ProfessorModel[]|null|IErrorResponse = await this.services.professorService.getProfessorsBySubjectName(name);
 
         if (data === null) {
             res.status(400).send("Invalid ID number.");
