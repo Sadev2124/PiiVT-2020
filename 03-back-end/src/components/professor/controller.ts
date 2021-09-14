@@ -18,7 +18,7 @@ class ProfessorController extends BaseController{
         const professorId: number = +id;
 
         if (professorId <= 0) {
-            res.sendStatus(400);
+            res.status(400).send("Invalid ID number.");
             return;
         }
 
@@ -96,7 +96,7 @@ class ProfessorController extends BaseController{
         const professorId: number = +id;
 
         if (professorId <= 0) {
-            res.sendStatus(400);
+            res.status(400).send("Invalid ID number.");
             return;
         }
 
@@ -121,7 +121,7 @@ class ProfessorController extends BaseController{
         const subjectId: number = +id;
 
         if (subjectId <= 0) {
-            res.sendStatus(400);
+            res.status(400).send("Invalid ID number.");
             return;
         }
 
@@ -146,7 +146,7 @@ class ProfessorController extends BaseController{
         const data: ProfessorModel|null|IErrorResponse = await this.services.professorService.getProfessorsBySubjectName(name);
 
         if (data === null) {
-            res.sendStatus(404);
+            res.status(400).send("Invalid ID number.");
             return;
         }
 

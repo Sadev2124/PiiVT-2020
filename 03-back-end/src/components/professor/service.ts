@@ -34,10 +34,11 @@ class ProfessorService extends BaseService<ProfessorModel> {
     public async add(data: IAddProfessor): Promise<ProfessorModel|IErrorResponse> {
         return new Promise<ProfessorModel|IErrorResponse>(async resolve => {
             this.db.execute(
-                `INSERT professor SET name = ?, surname = ?;`,
+                `INSERT professor SET name = ?, surname = ?, user_id = ?;`,
                 [
                     data.name,
                     data.surname,
+                    data.userId,
                 ]
             )
             .then(async res => {
