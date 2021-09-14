@@ -1,0 +1,5498 @@
+{
+	"info": {
+		"_postman_id": "f3f615b0-f9d6-4494-8267-14f7d72a4445",
+		"name": "Testiranje back-end dela (API)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Subject",
+			"item": [
+				{
+					"name": "GET all subjects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/subject",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all subjects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-zgc50Pzm+3Kf5oK4Nxc6GuFZs3M\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 08:37:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"subjectId\": 1,\n        \"name\": \"Matematika\"\n    },\n    {\n        \"subjectId\": 2,\n        \"name\": \"Srpski\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GET a single subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/subject/9",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET a single subject - for an existing subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-3PviBGjdOJtg8SF0D5vYwG0PTBo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 09:17:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"subjectId\": 1,\n    \"name\": \"Matematika\"\n}"
+						},
+						{
+							"name": "GET a single subject - for an invalid subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/-2",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"-2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b-EFiDB1U+dmqzx9Mo2UjcZ1SJPO8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 09:18:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Bad Request"
+						},
+						{
+							"name": "GET a single subject - for an ID of a non existing subject",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/78",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"78"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 09:18:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "GET all subjects by professor ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/subject/getSubjectsByProfessorId/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject",
+								"getSubjectsByProfessorId",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all subjects by professor ID - for an existing professor ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/getSubjectsByProfessorId/3",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"getSubjectsByProfessorId",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-HWvgjqhkLpMk8FdYj8Bq9U03W7E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:14:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"subjectId\": 5,\n        \"name\": \"Muzicko\"\n    },\n    {\n        \"subjectId\": 6,\n        \"name\": \"Likovno\"\n    }\n]"
+						},
+						{
+							"name": "GET all subjects by professor ID - for an invalid professor ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/getSubjectsByProfessorId/-2",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"getSubjectsByProfessorId",
+										"-2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:15:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						},
+						{
+							"name": "GET all subjects by professor ID - for a non existing professor ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/getSubjectsByProfessorId/56",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"getSubjectsByProfessorId",
+										"56"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:18:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "GET all subjects by student ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/subject/getSubjectsByStudentId/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject",
+								"getSubjectsByStudentId",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all subjects by student ID - for an existing student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/getSubjectsByStudentId/2",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"getSubjectsByStudentId",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-gqVYUg9UNBYSCkrYX9Ss5a+CrDE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 13:07:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"subjectId\": 2,\n        \"name\": \"Srpski\"\n    },\n    {\n        \"subjectId\": 7,\n        \"name\": \"Informatika\"\n    },\n    {\n        \"subjectId\": 8,\n        \"name\": \"Tehnicko\"\n    }\n]"
+						},
+						{
+							"name": "GET all subjects by student ID - for a non existing student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/getSubjectsByStudentId/24",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"getSubjectsByStudentId",
+										"24"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 13:07:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET all subjects by student ID - for an invalid student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/getSubjectsByStudentId/-5",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"getSubjectsByStudentId",
+										"-5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 13:07:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "POST a new subject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fizicko vaspitanje\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/subject",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST a new subject - with a valid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fizicko vaspitanje\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/subject",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20-D73VTDuQhFSWOo0YQGV9XPdzAO4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 13:35:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"subjectId\": 9,\n    \"name\": \"Fizicko\"\n}"
+						},
+						{
+							"name": "POST a new subject - with an invalid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"F\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/subject",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-mIVpkZDd+Z4K98rkdaZ2WcDVoQ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 13:38:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/name\",\n        \"schemaPath\": \"#/properties/name/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 2\n        },\n        \"message\": \"must NOT have fewer than 2 characters\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "PUT to edit an existing subject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fizicko vaspitanje\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/subject/10",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT to edit an existing subject - valid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fizicko vaspitanje\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/subject/9",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-W7WN5UBnLpkwTYcmNIxJ1eOj1GI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 16:28:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"subjectId\": 9,\n    \"name\": \"Fizicko vaspitanje\"\n}"
+						},
+						{
+							"name": "PUT to edit an existing subject - with a non existing subject ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fizicko vaspitanje\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/subject/98",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"98"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 16:30:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "PUT to edit an existing subject - with invalid data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"F\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/subject/9",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"9"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-mIVpkZDd+Z4K98rkdaZ2WcDVoQ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 16:30:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/name\",\n        \"schemaPath\": \"#/properties/name/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 2\n        },\n        \"message\": \"must NOT have fewer than 2 characters\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "DELETE a subject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/subject/10",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"subject",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE a subject - with a non existing subject ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/50",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"50"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-9JN3HIHK2YrBGKQY5FbXoVHr7EM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 17:42:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": -1,\n    \"errorMessage\": \"This record could not be deleted.\"\n}"
+						},
+						{
+							"name": "DELETE a subject - with an existing subject ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/subject/10",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"subject",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-tP/Vl0YDng5Kpr9fonFOnSbJzp0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Sep 2021 17:43:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 0,\n    \"errorMessage\": \"Subject deleted.\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{API_USER_AUTH_TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/user",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1431"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"597-9JkXsx28KvNvnJ/t3+yCidKYW7E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 00:56:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"userId\": 1,\n        \"username\": \"pSanjaGolubovic\",\n        \"passwordHash\": \"$2y$11$OzDS5TCfM7K1n8IYAJQJu.7eGjSEa4Cb8mMsu/BnOZVik6dI5fVhC\"\n    },\n    {\n        \"userId\": 2,\n        \"username\": \"pMarijaSimic\",\n        \"passwordHash\": \"$2y$11$cGTbkeSvOkDtPERtTG.1jOIJdY0IgZPlUHoJkbBZIMDGBpP1nzg2K\"\n    },\n    {\n        \"userId\": 3,\n        \"username\": \"pStefanStefanovic\",\n        \"passwordHash\": \"$2y$11$bTFMMWqHXVGKPCvsWWXGx.n9KuDvUGSU7PVAQUNyAKV4PxkkBp.yO\"\n    },\n    {\n        \"userId\": 4,\n        \"username\": \"pPeraPeric\",\n        \"passwordHash\": \"$2y$11$2QXxjBWQ.77iI27AgFutS.L/kGuykXOyfF2mM6U2OShjaZZ2CqsTO\"\n    },\n    {\n        \"userId\": 5,\n        \"username\": \"sMarkoMilenkovic\",\n        \"passwordHash\": \"$2y$11$QcpINqzIDt3fHGofV6Amh.8UiuZyn5CLbp3JlKSS3Nta3bDhysCN6\"\n    },\n    {\n        \"userId\": 6,\n        \"username\": \"sLazarBoskovic\",\n        \"passwordHash\": \"$2y$11$3s.9AEJAJ0Ay2YekNNBeMumXeE80BoqW2yC6795i7DM.y.nwTBXTG\"\n    },\n    {\n        \"userId\": 7,\n        \"username\": \"sAnaNikolic\",\n        \"passwordHash\": \"$2y$11$NcLxFn.Pxe77WVE6TtuW4uOE7Qu7o2Uw9MlMCtNtUX5..GgeMil0G\"\n    },\n    {\n        \"userId\": 8,\n        \"username\": \"sIvanaIvanovic\",\n        \"passwordHash\": \"$2y$11$QMk3WBkKQxrUjAIV7YNQkeAODZcXB.hUM5HoMIm0NgMtsioXa1JTG\"\n    },\n    {\n        \"userId\": 9,\n        \"username\": \"sTamaraMiskovic\",\n        \"passwordHash\": \"$2y$11$CNiNq8y9PmDAr8eBSAJYb.78XWrk1tEL/3Y8Pv1YxL5l2/EJRXmMe\"\n    },\n    {\n        \"userId\": 10,\n        \"username\": \"sJovanJovanovic\",\n        \"passwordHash\": \"$2y$11$/AIwUjbnZXvRmcG.jf/ja.AjSLWpsYbe0oN7WijKj./G0rvAt6Rd2\"\n    },\n    {\n        \"userId\": 11,\n        \"username\": \"sPavleKuznecov\",\n        \"passwordHash\": \"$2y$11$.1as55aQYkoL26/F7WPhQe1SRL2C2V06QjZFlP.6JyTuvJGE4u8T.\"\n    },\n    {\n        \"userId\": 12,\n        \"username\": \"sIvanStojkovic\",\n        \"passwordHash\": \"$2y$11$aYaGe73E260ZNcKKlpGyYO7bn0CEjfr1WSW5MmqEv0Znt5NwJirHK\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GET a single user by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/user/56",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"56"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET a single user by ID - for an existing user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"77-oZNgnFplxm8P3SQnK78ge3S2uDY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 00:57:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 1,\n    \"username\": \"pSanjaGolubovic\",\n    \"passwordHash\": \"$2y$11$OzDS5TCfM7K1n8IYAJQJu.7eGjSEa4Cb8mMsu/BnOZVik6dI5fVhC\"\n}"
+						},
+						{
+							"name": "GET a single user by ID - for an invalid user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/-1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"-1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-RVgWwAYN6oFX4b0eMubjXymRD/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 00:58:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "The ID value cannot be smaller than 1."
+						},
+						{
+							"name": "GET a single user by ID - for an ID of a non existing user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/56",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"56"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 00:58:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "GET a single user by username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/user/userByUsername/pSanjaGolubovic",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"userByUsername",
+								"pSanjaGolubovic"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET a single user by username - for an existing username",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/userByUsername/pSanjaGolubovic",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"userByUsername",
+										"pSanjaGolubovic"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"77-oZNgnFplxm8P3SQnK78ge3S2uDY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 00:59:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 1,\n    \"username\": \"pSanjaGolubovic\",\n    \"passwordHash\": \"$2y$11$OzDS5TCfM7K1n8IYAJQJu.7eGjSEa4Cb8mMsu/BnOZVik6dI5fVhC\"\n}"
+						},
+						{
+							"name": "GET a single user by username - for a non existing username",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/userByUsername/pSanja",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"userByUsername",
+										"pSanja"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:00:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "GET ID by username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/user/IdByUsername/pSanjaGolubovic",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"IdByUsername",
+								"pSanjaGolubovic"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET ID by username - for an existing username",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/IdByUsername/pSanjaGolubovic",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"IdByUsername",
+										"pSanjaGolubovic"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b-nUB5uPpePsfFR4QN/tE3K9apNgg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:03:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": 1\n}"
+						},
+						{
+							"name": "GET ID by username - for a non existing username",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/IdByUsername/pSanja",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"IdByUsername",
+										"pSanja"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:04:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "GET password by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/user/passwordById/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"passwordById",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET password by ID - for an existing user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/passwordById/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"passwordById",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-9nnjb3jRhq2DTfwV+7XkCt6sn00\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:05:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "$2y$11$OzDS5TCfM7K1n8IYAJQJu.7eGjSEa4Cb8mMsu/BnOZVik6dI5fVhC"
+						},
+						{
+							"name": "GET password by ID - for an invalid user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/passwordById/-5",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"passwordById",
+										"-5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-RVgWwAYN6oFX4b0eMubjXymRD/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:06:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "The ID value cannot be smaller than 1."
+						},
+						{
+							"name": "GET password by ID - for a non existing user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/passwordById/56",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"passwordById",
+										"56"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:06:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						}
+					]
+				},
+				{
+					"name": "POST a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"sSanjaGolubovic\",\r\n    \"password\": \"sanjasifra\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/user",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST a new user - with a valid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"pNatalijaSavic\",\r\n    \"password\": \"natalijasifra\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"77-UUP75d54ktSTfvUmMyLUbsVNZfo\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:12:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 13,\n    \"username\": \"pNatalijaSavic\",\n    \"passwordHash\": \"$2b$11$RvW5N.PhNqs4Up0W2vt7/e7P2p0zyAgrDiqi.zos5/JHkWa3TIEyS\"\n}"
+						},
+						{
+							"name": "POST a new user - with an invalid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"p\",\r\n    \"password\": \"natalijasifra\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "170"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"aa-V0SrNBsk6dM5CwOujwTS3g2CJ7A\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:12:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/username\",\n        \"schemaPath\": \"#/properties/username/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 2\n        },\n        \"message\": \"must NOT have fewer than 2 characters\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "PUT to edit an existing user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"sanjasanja\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/user/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT to edit an existing user - valid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"sifranatalija\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"77-4pWzmbyn4REaZ3lX3uLdsTWib5E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:15:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 13,\n    \"username\": \"pNatalijaSavic\",\n    \"passwordHash\": \"$2b$11$gY06wcwgbQy8vnW6XjkYPeF0owgansW17jnF3unf4n8pYO47OxlZi\"\n}"
+						},
+						{
+							"name": "PUT to edit an existing user - invalid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"sifranatalija\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/56",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"56"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:17:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "PUT to edit an existing user - with invalid data structure",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"si\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"13"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "170"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"aa-3q2UZWHv7OPPGvxJASoDVb2XgKs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:18:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/password\",\n        \"schemaPath\": \"#/properties/password/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 6\n        },\n        \"message\": \"must NOT have fewer than 6 characters\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "DELETE a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/user/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE a user - with a non existing user ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/50",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"50"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-fdUR+kEYPKq0iXOrFKT1mW2QMoM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:19:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 0,\n    \"errorMessage\": \"Deleted 0 records.\"\n}"
+						},
+						{
+							"name": "DELETE a user - with an existing user ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/user/13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-+/zHhg+84sQie8xvQmB03Ijwjc4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 01:20:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 0,\n    \"errorMessage\": \"Deleted 1 records.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Professor",
+			"item": [
+				{
+					"name": "GET all professors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/professor",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all professors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"110-Vheqz+90kr6EfMiFNLF7hRfFWU0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:29:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"professorId\": 1,\n        \"name\": \"Sanja\",\n        \"surname\": \"Golubovic\",\n        \"userId\": null\n    },\n    {\n        \"professorId\": 2,\n        \"name\": \"Marija\",\n        \"surname\": \"Simic\",\n        \"userId\": null\n    },\n    {\n        \"professorId\": 3,\n        \"name\": \"Stefan\",\n        \"surname\": \"Stefanovic\",\n        \"userId\": null\n    },\n    {\n        \"professorId\": 4,\n        \"name\": \"Petar\",\n        \"surname\": \"Peric\",\n        \"userId\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GET professor by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/professor/-1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor",
+								"-1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET professor by ID - for an existing professor ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-2y+DuhJs3HQTMsTBXua7ObMgGZ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:29:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"professorId\": 1,\n    \"name\": \"Sanja\",\n    \"surname\": \"Golubovic\",\n    \"userId\": null\n}"
+						},
+						{
+							"name": "GET professor by ID - for a non existing professor ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/56",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"56"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:30:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET professor by ID - for an invalid professor ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/-1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"-1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:32:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "GET professor by user ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/professor/getProfessorByUserId/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor",
+								"getProfessorByUserId",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET professor by user ID - for an existing user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/getProfessorByUserId/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"getProfessorByUserId",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-2y+DuhJs3HQTMsTBXua7ObMgGZ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:33:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"professorId\": 1,\n    \"name\": \"Sanja\",\n    \"surname\": \"Golubovic\",\n    \"userId\": null\n}"
+						},
+						{
+							"name": "GET professor by user ID - for a non existing user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/getProfessorByUserId/67",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"getProfessorByUserId",
+										"67"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:34:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET professor by user ID - for an invalid user ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/getProfessorByUserId/-3",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"getProfessorByUserId",
+										"-3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:34:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "GET professor by subject ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/professor/getProfessorBySubjectId/3",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor",
+								"getProfessorBySubjectId",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET professor by subject ID - for an existing subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/getProfessorBySubjectId/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"getProfessorBySubjectId",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-2y+DuhJs3HQTMsTBXua7ObMgGZ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:36:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"professorId\": 1,\n    \"name\": \"Sanja\",\n    \"surname\": \"Golubovic\",\n    \"userId\": null\n}"
+						},
+						{
+							"name": "GET professor by subject ID - for a non existing subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/getProfessorBySubjectId/34",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"getProfessorBySubjectId",
+										"34"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:36:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET professor by subject ID - for a non valid subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/getProfessorBySubjectId/-3",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"getProfessorBySubjectId",
+										"-3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:36:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "POST a new professor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Natalija\",\r\n    \"surname\" : \"Savic\",\r\n    \"userId\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/professor",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST a new professor - for a valid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Natalija\",\r\n    \"surname\" : \"Savic\",\r\n    \"userId\": 14\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/professor",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-M4GjXFX3rob17OggXvt6X/pELM4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:44:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"professorId\": 5,\n    \"name\": \"Natalija\",\n    \"surname\": \"Savic\",\n    \"userId\": null\n}"
+						},
+						{
+							"name": "POST a new professor - for an invalid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Na\",\r\n    \"surname\" : \"Savic\",\r\n    \"userId\": 14\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/professor",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-Qf0GztSjR6RrG3gbdEFJJdW7XAc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:46:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/name\",\n        \"schemaPath\": \"#/properties/name/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 3\n        },\n        \"message\": \"must NOT have fewer than 3 characters\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "PUT to edit an existing professor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Natalija Savic\",\r\n    \"surname\": \"Savic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/professor/5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT to edit an existing professor - valid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Nata\",\r\n    \"surname\": \"Savic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/professor/5",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-9BQFUmCU2bm46V7Y1QTCltkVbXE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:48:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"professorId\": 5,\n    \"name\": \"Nata\",\n    \"surname\": \"Savic\",\n    \"userId\": null\n}"
+						},
+						{
+							"name": "PUT to edit an existing professor - invalid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Nata\",\r\n    \"surname\": \"Savic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/professor/52",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"52"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:49:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "PUT to edit an existing professor - with invalid data structure",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"N\",\r\n    \"surname\": \"Savic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/professor/5",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-mIVpkZDd+Z4K98rkdaZ2WcDVoQ0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:49:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/name\",\n        \"schemaPath\": \"#/properties/name/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 2\n        },\n        \"message\": \"must NOT have fewer than 2 characters\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "DELETE a professor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/professor/5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"professor",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE a professor - with an invalid professor ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/-3",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"-3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:51:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						},
+						{
+							"name": "DELETE a professor - with a non existing professor ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/54",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"54"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-fdUR+kEYPKq0iXOrFKT1mW2QMoM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:51:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 0,\n    \"errorMessage\": \"Deleted 0 records.\"\n}"
+						},
+						{
+							"name": "DELETE a professor - with an existing professor ID - but professor has a foreign key and can not be deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/professor/5",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"professor",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "243"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f3-q06vxN9jOVeqYSJyCr9Js2HNBeQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 11:52:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 1451,\n    \"errorMessage\": \"Cannot delete or update a parent row: a foreign key constraint fails (`elektronski_dnevnik`.`student`, CONSTRAINT `fk_student_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE)\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "GET all students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/student",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all students",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "921"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"399-rJoGxx6K+OkjppwIH7c21PUkNk0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:26:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"studentId\": 1,\n        \"name\": \"Marko\",\n        \"surname\": \"Milenkovic\",\n        \"jmbg\": \"1209998849533\",\n        \"email\": \"marko@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 2,\n        \"name\": \"Lazar\",\n        \"surname\": \"Boskovvic\",\n        \"jmbg\": \"0505997867511\",\n        \"email\": \"lazar@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 3,\n        \"name\": \"Ana\",\n        \"surname\": \"Nikolic\",\n        \"jmbg\": \"2609995987899\",\n        \"email\": \"ana@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 4,\n        \"name\": \"Ivana\",\n        \"surname\": \"Ivanovic\",\n        \"jmbg\": \"1512998983422\",\n        \"email\": \"ivana@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 5,\n        \"name\": \"Tamara\",\n        \"surname\": \"Miskovic\",\n        \"jmbg\": \"2405997893477\",\n        \"email\": \"tamara@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 6,\n        \"name\": \"Jovan\",\n        \"surname\": \"Jovanovic\",\n        \"jmbg\": \"0101996876388\",\n        \"email\": \"jovan@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 7,\n        \"name\": \"Pavle\",\n        \"surname\": \"Kuznecov\",\n        \"jmbg\": \"2909995782344\",\n        \"email\": \"pavle@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 8,\n        \"name\": \"Ivan\",\n        \"surname\": \"Stojkovic\",\n        \"jmbg\": \"1306997657488\",\n        \"email\": \"ivan@gmail.com\",\n        \"userId\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GET a student by student ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/student/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"student",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET a student by student ID - for an existing student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"74-jFxZvBpakxz6HVuPuJwFGTIGXwQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:26:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"studentId\": 1,\n    \"name\": \"Marko\",\n    \"surname\": \"Milenkovic\",\n    \"jmbg\": \"1209998849533\",\n    \"email\": \"marko@gmail.com\",\n    \"userId\": null\n}"
+						},
+						{
+							"name": "GET a student by student ID - for a non existing student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/17",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"17"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:27:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET a student by student ID - for an invalid student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/-6",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"-6"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:27:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "GET all students by subject ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/student/getAllStudentsBySubjectId/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"student",
+								"getAllStudentsBySubjectId",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all students by subject ID - for an existing subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/getAllStudentsBySubjectId/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"getAllStudentsBySubjectId",
+										"1"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15f-Z7jWrTj1oPiP65NPyHJEosEcnuM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:58:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"studentId\": 1,\n        \"name\": \"Marko\",\n        \"surname\": \"Milenkovic\",\n        \"jmbg\": \"1209998849533\",\n        \"email\": \"marko@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 5,\n        \"name\": \"Tamara\",\n        \"surname\": \"Miskovic\",\n        \"jmbg\": \"2405997893477\",\n        \"email\": \"tamara@gmail.com\",\n        \"userId\": null\n    },\n    {\n        \"studentId\": 6,\n        \"name\": \"Jovan\",\n        \"surname\": \"Jovanovic\",\n        \"jmbg\": \"0101996876388\",\n        \"email\": \"jovan@gmail.com\",\n        \"userId\": null\n    }\n]"
+						},
+						{
+							"name": "GET all students by subject ID - for a non existing subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/getAllStudentsBySubjectId/19",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"getAllStudentsBySubjectId",
+										"19"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:58:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET all students by subject ID - for an invalid subject ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/getAllStudentsBySubjectId/-4",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"getAllStudentsBySubjectId",
+										"-4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:58:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "POST a new student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teodor\",\r\n    \"surname\": \"Rankovic\",\r\n    \"jmbg\": \"0409998987654\",\r\n    \"email\": \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0647658672\",\r\n    \"postalAddress\": \"Makedonska 23\",\r\n    \"userId\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/student",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST a new student - with an invalid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"T\",\r\n    \"surname\": \"Rankovic\",\r\n    \"jmbg\": \"0409998987654\",\r\n    \"email\": \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0647658672\",\r\n    \"postalAddress\": \"Makedonska 23\",\r\n    \"userId\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/student",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-Qf0GztSjR6RrG3gbdEFJJdW7XAc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:31:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/name\",\n        \"schemaPath\": \"#/properties/name/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 3\n        },\n        \"message\": \"must NOT have fewer than 3 characters\"\n    }\n]"
+						},
+						{
+							"name": "POST a new student - with a valid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teodor\",\r\n    \"surname\": \"Rankovic\",\r\n    \"jmbg\": \"0409998987654\",\r\n    \"email\": \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0647658672\",\r\n    \"postalAddress\": \"Makedonska 23\",\r\n    \"userId\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/student",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"74-6rB++y//sybC/UnGI5aqBkr2aNM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:32:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"studentId\": 9,\n    \"name\": \"Teodor\",\n    \"surname\": \"Rankovic\",\n    \"jmbg\": \"0409998987654\",\n    \"email\": \"teodor@gmail.com\",\n    \"userId\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "PUT to edit an existing student",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0658790543\",\r\n    \"postalAddress\": \"Kralja Milana 5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/student/9",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"student",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PUT to edit an existing student - with an invalid data structure",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0\",\r\n    \"postalAddress\": \"Kralja Milana 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/student/9",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"9"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-GELtINdQLu0u/CZN0C/xY6tXPRM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 13:11:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/phoneNumber\",\n        \"schemaPath\": \"#/properties/phoneNumber/minLength\",\n        \"keyword\": \"minLength\",\n        \"params\": {\n            \"limit\": 5\n        },\n        \"message\": \"must NOT have fewer than 5 characters\"\n    }\n]"
+						},
+						{
+							"name": "PUT to edit an existing student - invalid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0658790543\",\r\n    \"postalAddress\": \"Kralja Milana 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/student/67",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"67"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 13:12:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "PUT to edit an existing student - valid response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"teodor@gmail.com\",\r\n    \"phoneNumber\": \"0658790543\",\r\n    \"postalAddress\": \"Kralja Milana 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/student/9",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"74-6rB++y//sybC/UnGI5aqBkr2aNM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 13:13:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"studentId\": 9,\n    \"name\": \"Teodor\",\n    \"surname\": \"Rankovic\",\n    \"jmbg\": \"0409998987654\",\n    \"email\": \"teodor@gmail.com\",\n    \"userId\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE a student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/student/9",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"student",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DELETE a student - with an invalid student ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/-3",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"-3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:34:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						},
+						{
+							"name": "DELETE a student - with a non existing student ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/56",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"56"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-fdUR+kEYPKq0iXOrFKT1mW2QMoM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:34:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 0,\n    \"errorMessage\": \"Deleted 0 records.\"\n}"
+						},
+						{
+							"name": "DELETE a student - with an existing student ID - but student has a foreign key and can not be deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/student/9",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"student",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "243"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f3-q06vxN9jOVeqYSJyCr9Js2HNBeQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 12:35:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": 1451,\n    \"errorMessage\": \"Cannot delete or update a parent row: a foreign key constraint fails (`elektronski_dnevnik`.`student`, CONSTRAINT `fk_student_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE)\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mark",
+			"item": [
+				{
+					"name": "GET all marks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/mark",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"mark"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET one mark by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/mark/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"mark",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET one mark by ID - for an existing mark ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/mark/1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-RE6//+qMx6N0fP3nE+uyK9Qj3R4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 14:37:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"markId\": 1,\n    \"mark\": 3,\n    \"markType\": \"first_trimester\",\n    \"description\": null,\n    \"professorId\": 1,\n    \"studentId\": 1,\n    \"subjectId\": 1\n}"
+						},
+						{
+							"name": "GET one mark by ID - for a non existing mark ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/mark/19",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark",
+										"19"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 14:38:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET one mark by ID - for an invalid mark ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/mark/-3",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark",
+										"-3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 14:38:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "GET marks for one student for one subject based on mark type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/mark/1/subject/1/markType/first_trimester",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"mark",
+								"1",
+								"subject",
+								"1",
+								"markType",
+								"first_trimester"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all marks for one student for one subject based on mark type  - for an existing student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/mark/1/subject/1/markType/first_trimester",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark",
+										"1",
+										"subject",
+										"1",
+										"markType",
+										"first_trimester"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-bboC76YJzlgGpnOqZy+pz4qvQrg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 15:42:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"markId\": 1,\n        \"mark\": 3,\n        \"markType\": \"first_trimester\",\n        \"description\": null,\n        \"professorId\": 1,\n        \"studentId\": 1,\n        \"subjectId\": 1\n    }\n]"
+						},
+						{
+							"name": "GET marks for one student for one subject based on mark type - for a non existing student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/mark/24/subject/1/markType/first_trimester",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark",
+										"24",
+										"subject",
+										"1",
+										"markType",
+										"first_trimester"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 15:43:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "GET marks for one student for one subject based on mark type - for an invalid student ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/mark/-5/subject/1/markType/first_trimester",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark",
+										"-5",
+										"subject",
+										"1",
+										"markType",
+										"first_trimester"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12-f+3hdSC66EM8zs+iKspfvFnH9H0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 15:43:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid ID number."
+						}
+					]
+				},
+				{
+					"name": "POST a new mark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mark\" : 3,\r\n    \"markType\": \"semester_mark\",\r\n    \"description\": \"null\",\r\n    \"professorId\": 4,\r\n    \"studentId\": 8,\r\n    \"subjectId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/mark",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"mark"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST a new mark - with an invalid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mark\" : 3,\r\n    \"markType\": \"semester\",\r\n    \"description\": \"null\",\r\n    \"professorId\": 4,\r\n    \"studentId\": 8,\r\n    \"subjectId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/mark",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-xsq95C5AWpyny6aXHvcV0jHaUm0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 14:45:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"instancePath\": \"/markType\",\n        \"schemaPath\": \"#/properties/markType/pattern\",\n        \"keyword\": \"pattern\",\n        \"params\": {\n            \"pattern\": \"^(first_trimester|second_trimester|semester_mark|final_mark)$\"\n        },\n        \"message\": \"must match pattern \\\"^(first_trimester|second_trimester|semester_mark|final_mark)$\\\"\"\n    }\n]"
+						},
+						{
+							"name": "POST a new mark - with a valid data structure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mark\" : 3,\r\n    \"markType\": \"semester_mark\",\r\n    \"description\": \"null\",\r\n    \"professorId\": 4,\r\n    \"studentId\": 8,\r\n    \"subjectId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/mark",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"mark"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-UwPr/fN1lE4K+ew5it2yrbQGv3I\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 14:45:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"markId\": 8,\n    \"mark\": 3,\n    \"markType\": \"semester_mark\",\n    \"description\": \"null\",\n    \"professorId\": 4,\n    \"studentId\": 8,\n    \"subjectId\": 2\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "POST a new login request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"pSanjaGolubovic\",\r\n    \"password\": \"sanjasanja\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/user/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST a new login request - when a user does not exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"pSanja\",\r\n    \"password\": \"sanjasifra34\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/user/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9-0gXL1ngzMqISxa6S1zx3F4wtLyg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 18:20:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Not Found"
+						},
+						{
+							"name": "POST a new login request - when the password is not correct",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"pSanjaGolubovic\",\r\n    \"password\": \"sanjasifra34\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/user/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "22"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16-fEc1WArHk5yVgGP5ekfvNKEEvfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 18:20:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid user password."
+						},
+						{
+							"name": "POST a new login request - valid response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"pSanjaGolubovic\",\r\n    \"password\": \"sanjasanja\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/user/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1070"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42e-Pvq0NJzbOf0rlTKgsJfocKNue8A\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 18:30:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"authToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWRlbnRpdHkiOiJwU2FuamFHb2x1Ym92aWMiLCJyb2xlIjoidXNlciIsImlhdCI6MTYzMTY0NDIwMSwiZXhwIjoxNjMxNjQ0MzIxLCJpc3MiOiJsb2NhbGhvc3QifQ.xO_6mrPS56ojcz2iPaKAIW-W0fmMgUR53r0efhynPGFMF8EqsprmuTzGi56mafppcIjBfLrcsb9Z6ssJ_uba7ygb0ndrlxBMjTv92ht7ovMhbQHCEQcUlo_CyFokjj3sePfV7jbHe8TqmgAhS0Fy9-ufX3OdnZimV2B86nLJ-5MPCFdFV8fzy7jtNNKwG4ihUVcER7uQ-rr24Lo2OJ47hI4XlJCKaxfSY5dqFGW-uSYtI56vWIGna0Ok4pV-tL49vrVngtEU9evPaC72shPkFd25gdwN4RDFFunKXDROSS0-J5MkSRcyTtF_IOiD4dEOMS4qyFu4yzdhJuP7wzYocQ\",\n    \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWRlbnRpdHkiOiJwU2FuamFHb2x1Ym92aWMiLCJyb2xlIjoidXNlciIsImlhdCI6MTYzMTY0NDIwMSwiZXhwIjoxNjYzMTgwMjAxLCJpc3MiOiJsb2NhbGhvc3QifQ.Ua_Qk96EJ4Iy-ROxmzpsjdiqiQ44vBAFsdmqGE5sUBKNnnKzUjn3xuJif4EIytXcWnc-83Ym-TCsc9A4zXl-tb2F8TfeOuw8n62g7KElbIToGQ3WGiLpOEfEyV3uHNe2P17q1OmnnBcjOsIVtRfsdWLDlGsFpS4vP97uDMjhx-btNtIku30KTccGKu0v89LnHQdNm6Xux7_jbTxNUf_0ntgn8NT2zx9JjD_5ktdlxPy38mRVM6nkJvC5lpYGjeLft8IRrtUbNK1KfsuRmJrYGnoW-XX6nm2_paR4TVC_NXMtOH6n370KOrmxIWIid-tFLF5asbJd4bA9wZxeMcUabQ\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://localhost:40080"
+		}
+	]
+}

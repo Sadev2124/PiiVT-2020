@@ -14,11 +14,16 @@ import StudentService from './components/student/service';
 import StudentRouter from './components/student/router';
 import MarkService from './components/mark/service';
 import MarkRouter from './components/mark/router';
+import AuthRouter from "./components/auth/router";
 
 async function main() {
     const application: express.Application = express();
 
-    application.use(cors());
+    application.use(cors({
+        origin: "http://localhost:3000",
+        credential: true,
+    }));
+
     application.use(express.json());
 
     const resources: IApplicationResources = {
@@ -61,6 +66,7 @@ async function main() {
         new ProfessorRouter(),
         new StudentRouter(),
         new MarkRouter(),
+        new AuthRouter(),
     ]);
 
     application.use((req, res) => {
