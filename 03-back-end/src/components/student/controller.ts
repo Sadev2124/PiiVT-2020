@@ -114,6 +114,19 @@ class StudentController extends BaseController{
 
         res.status(500).send(data);
     }
+
+    async getStudentIdByUserId(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+
+        const studentId: number = +id;
+
+        if (studentId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        res.send(await this.services.studentService.getStudentIdByUserId(studentId));
+    }
 }
 
 export default StudentController;

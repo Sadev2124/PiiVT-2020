@@ -135,6 +135,16 @@ class StudentService extends BaseService<StudentModel> {
         
             return items;
     }
+
+    public async getStudentIdByUserId(userId: number): Promise<number|null> {
+        const users = await this.getAllByFieldNameFromTable("student", "user_id", userId);
+
+        if (!Array.isArray(users) || users.length === 0) {
+            return null;
+        }
+
+        return users[0].studentId;
+    }
 }
 
 export default StudentService;
